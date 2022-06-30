@@ -16,3 +16,5 @@ Route::get('/', function () {
 });
 
 Route::resource('rest', 'RestappController');
+
+Route::resource('hello/rest', 'HelloController@rest')
