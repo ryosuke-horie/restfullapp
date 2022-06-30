@@ -24,10 +24,12 @@ class RestappController extends Controller
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
+     * 
+     * フォームを表示するアクション
      */
     public function create()
     {
-        //
+        return view('rest.create');
     }
 
     /**
@@ -35,10 +37,17 @@ class RestappController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
+     * 
+     * POST送信した後のアクション
+     * 登録する処理を行う
      */
     public function store(Request $request)
     {
-        //
+        $restdata = new Restdata;
+        $form = $request->all();
+        unset($form['_token']);
+        $restdata->fill($form)->save();
+        return redirect('/rest');
     }
 
     /**
